@@ -1,0 +1,20 @@
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.column-section:nth-child(2n + 1) {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.column-section:nth-child(2n) {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.tool-section {
+  height: 100px;
+  background-color: #d7d9b1a2;
+  border-radius: 20px;
+  margin: 10px 5px 5px 0px;
+}

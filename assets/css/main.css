@@ -91,10 +91,10 @@ body {
   padding: 20px 10px 50px 10px;
   border-radius: 12px;
 }
-.column-section .section-title{
-    color: #136F63;
-    font-weight: bolder;
-  }
+.column-section .section-title {
+  color: #136f63;
+  font-weight: bolder;
+}
 
 .column-section thead {
   background-color: #136f6364;
@@ -123,5 +123,5 @@ body {
   font-weight: bold;
 }
 .column-section tbody * {
-    padding: 5px 3px 5px 3px;
-  }
+  padding: 5px 3px 5px 3px;
+}

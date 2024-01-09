@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stouchi</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/accounts.css">
+    <link rel="stylesheet" href="assets/css/transactions.css">
 </head>
 
 <body>
@@ -23,45 +25,8 @@
             </ul>
         </nav>
     </section>
+    <section class="tool-section"></section>
     <section class="content">
-        <div class="column-section">
-            <div class="section-title">
-                <h1>Accounts</h1>
-            </div>
-            <div class="section-body">
-                <table style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>Account</th>
-                            <th>Balance</th>
-                            <th>Latest Transaction</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cash</td>
-                            <td>115.5TND</td>
-                            <td>4/01/2024 15:36</td>
-                        </tr>
-                        <tr>
-                            <td>Bank BNA</td>
-                            <td>115.5TND</td>
-                            <td>4/01/2024 15:36</td>
-                        </tr>
-                        <tr>
-                            <td>Savings</td>
-                            <td>115.5TND</td>
-                            <td>4/01/2024 15:36</td>
-                        </tr>
-                        <tr>
-                            <td>D17</td>
-                            <td>115.5TND</td>
-                            <td>4/01/2024 15:36</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
         <div class="column-section">
             <div class="section-title">
                 <h1>Transactions</h1>
@@ -79,7 +44,7 @@
                             <th>Fee</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="transactions">
                         <tr>
                             <td>Transfer</td>
                             <td>D17</td>
@@ -96,7 +61,7 @@
                             <td>15TND</td>
                             <td>--</td>
                         </tr>
-                        
+
                         <tr>
                             <td>Income</td>
                             <td>Cash</td>
@@ -117,10 +82,37 @@
                 </table>
             </div>
         </div>
+        <div class="column-section record-transaction">
+            <div class="section-title">
+                <h1>+ New Transacrion</h1>
+            </div>
+
+            <div class="section-body">
+                <select name="" id="type">
+                    <option value="expense">expense</option>
+                    <option value="income">income</option>
+                    <option value="transaction">transaction</option>
+                </select>
+
+                <select name="" id="acc">
+                    <option value="expense">cash</option>
+                    <option value="income">bank</option>
+                </select>
+
+                <select name="" id="categ">
+                    <option value="expense">food</option>
+                    <option value="income">party</option>
+                    <option value="transaction">household</option>
+                </select>
+                <input type="text" id="ammount">
+                <button id="submit">Save</button>
+            </div>
+        </div>
     </section>
     <section class="footer"></section>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="assets/scripts/transactions.js"></script>
 </body>
 
 </html>
