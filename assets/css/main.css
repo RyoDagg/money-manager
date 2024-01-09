@@ -87,16 +87,41 @@ body {
 .column-section {
   text-align: center;
   margin: 10px;
-  background: #fff;
+  background: #fffffff0;
   padding: 20px 10px 50px 10px;
   border-radius: 12px;
 }
+.column-section .section-title{
+    color: #136F63;
+    font-weight: bolder;
+  }
 
 .column-section thead {
   background-color: #136f6364;
   color: #0d0630;
+  font-size: 18px;
 }
 .column-section thead th {
   padding: 5px;
   padding-bottom: 3px;
 }
+.column-section tbody {
+  /* font-weight: 590; */
+  padding: 5px;
+  padding-bottom: 3px;
+}
+
+.column-section tbody tr:nth-child(2n) {
+  background-color: #e7001b1f;
+}
+
+.column-section tbody tr:nth-child(2n + 1) {
+  background-color: #1d50ff1f;
+}
+.column-section tbody tr:hover {
+  background-color: #0000003f;
+  font-weight: bold;
+}
+.column-section tbody * {
+    padding: 5px 3px 5px 3px;
+  }
