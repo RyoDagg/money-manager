@@ -1,0 +1,102 @@
+@font-face {
+  font-family: RobotoSlab;
+  src: url(RobotoSlab.ttf);
+}
+
+@font-face {
+  font-family: Dosis;
+  src: url(Dosis.ttf);
+}
+
+body {
+  font-family: Dosis;
+  background: url(../images/12491.jpg);
+  background-size: cover;
+}
+
+.header {
+  background-color: #d7d9b1;
+  /* display: block; */
+  background-image: url(../images/tri.jpg);
+  background-size: cover;
+  height: 60px;
+  font-family: RobotoSlab;
+  text-align: center;
+  padding: 5px 5px 0px 5px;
+}
+
+.header nav ul {
+  list-style: none;
+}
+
+.header li {
+  display: inline;
+}
+
+.header li .nav-link:link,
+.header li .nav-link:visited,
+.header li .nav-link {
+  border-radius: 10px;
+  margin: 3px 10px 3px 10px;
+  padding: 17px 35px 17px 35px;
+  background-color: #e7001b9f;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.header li .nav-link:hover {
+  border-radius: 5px;
+  margin: 0 5px 0 5px;
+  padding: 20px 40px 20px 40px;
+  background-color: #1d52ff9f;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.logo-container {
+  margin: 5px 20px 5px 20px;
+  /* padding: 5px; */
+  /* float: left; */
+}
+
+.logo-container * {
+  float: left;
+  display: inline;
+  /* margin: 10px 20px 10px 20px; */
+}
+.title {
+  color: #fff;
+  font-size: 30px;
+  justify-content: center;
+  font-family: RobotoSlab;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.logo-container img {
+  width: 40px;
+  height: 40px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.column-section {
+  text-align: center;
+  margin: 10px;
+  background: #fff;
+  padding: 20px 10px 50px 10px;
+  border-radius: 12px;
+}
+
+.column-section thead {
+  background-color: #136f6364;
+  color: #0d0630;
+}
+.column-section thead th {
+  padding: 5px;
+  padding-bottom: 3px;
+}
