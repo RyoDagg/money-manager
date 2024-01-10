@@ -59,7 +59,7 @@ var renderAccount = function () {
   var $sectionTitle = $div.clone().attr({
     class: "section-title",
   });
-  var $h1 = $("<h1></h1>").text(this.name + ": " + this.balance + "TND");
+  var $h1 = $("<h1></h1>").html(this.name + ": <span class=\"money-value\">" + this.balance + "</span>TND");
   $sectionTitle.append($h1);
 
   var $sectionBody = $div.clone().attr({
