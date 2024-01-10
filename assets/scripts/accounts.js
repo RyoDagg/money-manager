@@ -24,7 +24,8 @@ var Account = (name, category, balance, id) => {
 
   // Methods
   instance.render = renderAccount;
-  // instance.getTransactions = getTransactions;
+  instance.whidhraw = whidhraw;
+  instance.deposit = deposit;
 
   return instance;
 };
@@ -56,6 +57,16 @@ var renderAccount = function () {
   $div.append($sectionTitle);
   $div.append($sectionBody);
   $content.append($div);
+};
+
+var whidhraw = function (ammount) {
+  console.log("removing", ammount, "from", this.name);
+  this.balance -= ammount;
+  console.log(this.balance);
+};
+
+var deposit = function (ammount) {
+  this.balance += ammount;
 };
 
 // DOM manipulation
@@ -116,8 +127,4 @@ each(storedAccounts, function (account, i) {
 
   account.render();
 });
-console.log(storedAccounts[0].id);
-
-function fetchTransaction(params) {
-  
-}
+// console.log(storedAccounts[0].id);

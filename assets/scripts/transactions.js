@@ -46,7 +46,7 @@ var Transaction = (
 };
 
 var renderTransaction = function () {
-  console.log(this);
+  // console.log(this);
   $tr = generateTableRow(
     this.type,
     this.fromName,
@@ -93,18 +93,30 @@ var appendTransaction = function () {
   if (invalidInput) {
     alert("Invalid Input Check Again");
   } else {
-    var to, toName, fee;
-    category;
+    var to, toName, fee, category;
     if ($transactionInputs.type.find("option:selected").val() === "Transfer") {
       to = $transactionInputs.to.find("option:selected").val();
       toName = $transactionInputs.to.find("option:selected").text();
       fee = Number($transactionInputs.fee.val());
       category = "--";
+      // console.log(to, toName, fee, category);
+
+      transact(
+        $transactionInputs.type.find("option:selected").val(),
+        $transactionInputs.account.find("option:selected").val(),
+        Number($transactionInputs.ammount.val(), to, fee)
+      );
     } else {
       to = "--";
       toName = "--";
       fee = "--";
       category = $transactionInputs.category.find("option:selected").val();
+
+      transact(
+        $transactionInputs.type.find("option:selected").val(),
+        $transactionInputs.account.find("option:selected").val(),
+        Number($transactionInputs.ammount.val())
+      );
     }
 
     var transaction = Transaction(
@@ -119,7 +131,7 @@ var appendTransaction = function () {
       // Number($transactionInputs.fee.val())
       fee
     );
-    console.log(transaction);
+    // console.log(transaction);
     storedTransactions.unshift(transaction);
     transaction.render();
 
@@ -136,7 +148,7 @@ var appendTransaction = function () {
 };
 
 $transactionInputs.type.on("change", function () {
-  console.log($transactionInputs.type.find("option:selected").val());
+  // console.log($transactionInputs.type.find("option:selected").val());
   if ($transactionInputs.type.find("option:selected").val() === "Transfer") {
     $transactionInputs.to.removeAttr("disabled");
     $transactionInputs.fee.removeAttr("disabled");
@@ -152,3 +164,34 @@ $transactionInputs.type.on("change", function () {
 //   }
 // });
 $transactionInputs.submit.on("click", appendTransaction);
+
+$transactionInputs.ammount.keypress(function (event) {
+  if (event.which == 13) {
+    appendTransaction();
+  }
+});
+
+$transactionInputs.fee.keypress(function (event) {
+  if (event.which == 13) {
+    appendTransaction();
+  }
+});
+
+storedTransactions = map(storedTransactions, function (transaction) {
+  return Transaction(
+    transaction.type,
+    transaction.from,
+    transaction.fromName,
+    transaction.to,
+    transaction.toName,
+    transaction.category,
+    transaction.ammount,
+    transaction.fee,
+    transaction.id
+  );
+});
+each(storedTransactions, function (transaction, i) {
+  // console.log(2);
+
+  transaction.render();
+});
