@@ -216,16 +216,12 @@ storedTransactions = map(storedTransactions, function (transaction) {
   );
 });
 each(storedTransactions, function (transaction, i) {
-  // console.log(2);
-
   transaction.render();
 });
 
 var $latest = $("#latest-transactions");
 function latest() {
   each(storedTransactions.slice(0, 10), function (transaction, i) {
-    console.log(2);
-
     transaction.render($latest);
   });
 }
