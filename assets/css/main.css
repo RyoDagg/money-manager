@@ -169,7 +169,7 @@ table {
   border-color: #fff;
   color: white;
   background-color: #0D0630;
-  transition: all 0.2s;
+  transition: all ease-in-out 0.2s;
 }
 .input-label {
   text-align: left;
