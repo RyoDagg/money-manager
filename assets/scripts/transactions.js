@@ -123,7 +123,11 @@ var appendTransaction = function () {
       to = "--";
       toName = "--";
       fee = "--";
-      category = $transactionInputs.category.find("option:selected").val();
+      if ($transactionInputs.type.find("option:selected").val() === "Income") {
+        category = "--";
+      } else {
+        category = $transactionInputs.category.find("option:selected").val();
+      }
 
       transact(
         $transactionInputs.type.find("option:selected").val(),
@@ -166,9 +170,15 @@ $transactionInputs.type.on("change", function () {
     $transactionInputs.to.removeAttr("disabled");
     $transactionInputs.fee.removeAttr("disabled");
     $transactionInputs.category.attr("disabled", true);
+  } else if (
+    $transactionInputs.type.find("option:selected").val() === "Income"
+  ) {
+    $transactionInputs.to.attr("disabled", true);
+    $transactionInputs.category.attr("disabled", true);
+    $transactionInputs.fee.attr("disabled", true);
   } else {
     $transactionInputs.to.attr("disabled", true);
-    $transactionInputs.fee.attr("disabled", true);
+    $transactionInputs.category.attr("disabled", true);
     $transactionInputs.category.removeAttr("disabled");
   }
 });

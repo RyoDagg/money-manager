@@ -7,21 +7,6 @@ if (localStorage.getItem("storedAccounts")) {
   storedAccounts = [];
 }
 
-function summary() {
-  $summary.empty();
-
-  each(storedAccounts, function (account) {
-    $tr = generateTableRow(
-      account.name,
-      account.category,
-      account.balance,
-      account.totalIn,
-      account.totalOut
-    );
-    $summary.append($tr);
-  });
-}
-
 var $overview = $("#accounts-overview");
 
 function overview() {
@@ -39,4 +24,3 @@ function overview() {
   });
 }
 overview();
-
