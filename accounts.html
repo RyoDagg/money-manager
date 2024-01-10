@@ -43,35 +43,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Transfer</td>
-                            <td>D17</td>
-                            <td>Cash</td>
-                            <td>350TND</td>
-                            <td>1.8TND</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>Food</td>
-                            <td>15TND</td>
-                            <td>--</td>
-                        </tr>
-
-                        <tr>
-                            <td>Income</td>
-                            <td>Cash</td>
-                            <td>Salary</td>
-                            <td>1.550TND</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>Party</td>
-                            <td>85TND</td>
-                            <td>--</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -83,76 +54,23 @@
 
             <div class="section-body input-section">
 
+                <div class="input-label">Name <small style="color: #E7001B;">(Required *)</small></div>
                 <input id="name" placeholder="name">
 
+                <div class="input-label">Account Type</div>
                 <select id="category">
                     <option value="Cash">Cash</option>
                     <option value="Bank">Bank</option>
                 </select>
 
-                <input id="balance" placeholder="balance">
+                <div class="input-label">Initial Balance <small style="color: #1D50FF;">(Empty = 0)</small ></div>
+                <input id="balance" placeholder="Initial Balance">
 
                 <button id="submit-account">Save</button>
             </div>
         </div>
     </section>
-    <section id="content" class="content">
-        <div class="column-section">
-            <div class="section-title">
-                <h1>Cash: 120TND</h1>
-            </div>
-
-            <div class="section-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Category</th>
-                            <th>Ammount</th>
-                            <th>Fee</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Transfer</td>
-                            <td>D17</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>350TND</td>
-                            <td>1.8TND</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Food</td>
-                            <td>15TND</td>
-                            <td>--</td>
-                        </tr>
-
-                        <tr>
-                            <td>Income</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Salary</td>
-                            <td>1.550TND</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Party</td>
-                            <td>85TND</td>
-                            <td>--</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+    <section id="content" class="content"></section>
     <section class="footer"></section>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"
@@ -161,6 +79,7 @@
     <script src="assets/scripts/main.js"></script>
     <script src="assets/scripts/transactionsFilters.js"></script>
     <script src="assets/scripts/table.js"></script>
+    <script src="assets/scripts/summary.js"></script>
     <script src="assets/scripts/accounts.js"></script>
 </body>
 

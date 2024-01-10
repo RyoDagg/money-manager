@@ -54,18 +54,22 @@
             </div>
 
             <div class="section-body input-section">
+                <div class="input-label">Transacrion Type</div>
                 <select name="" id="type">
                     <option value="Expence">Expence</option>
                     <option value="Income">Income</option>
                     <option value="Transfer">Transfer</option>
                 </select>
 
+                <div class="input-label">Account / From</div>
                 <select name="" id="account">
                 </select>
 
+                <div class="input-label">Transfer Accout</div>
                 <select name="" id="to">
                 </select>
 
+                <div class="input-label">Expence Category</div>
                 <select name="" id="category">
                     <option value="Food 🥪">Food 🥪</option>
                     <option value="Party">Party</option>
@@ -73,7 +77,11 @@
                     <option value="HouseHold 🏡">HouseHold 🏡</option>
                     <option value="Camping 🏕️">Camping 🏕️</option>
                 </select>
+
+                <div class="input-label">Ammount (*)</div>
                 <input type="text" placeholder="Ammount (TND)" id="ammount">
+
+                <div class="input-label">Transacrion Type</div>
                 <input type="text" placeholder="Fee (TND)" id="fee">
                 <button id="submit-transaction">Save</button>
             </div>
@@ -88,6 +96,7 @@
     <script src="assets/scripts/table.js"></script>
     <script src="assets/scripts/accounts.js"></script>
     <script src="assets/scripts/transactions.js"></script>
+    
 </body>
 
 </html>

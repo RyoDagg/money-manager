@@ -17,7 +17,15 @@ if (localStorage.getItem("lastAccountId")) {
 // defining Account class and ID generator
 var accountsID = generateID(lastAccountId);
 
-var Account = (name, category, balance, id, transactions) => {
+var Account = (
+  name,
+  category,
+  balance,
+  totalIn = balance,
+  totalOut = 0,
+  id,
+  transactions
+) => {
   var instance = {};
 
   if (id === undefined) {
@@ -29,6 +37,8 @@ var Account = (name, category, balance, id, transactions) => {
   instance.name = name;
   instance.category = category;
   instance.balance = balance;
+  instance.totalOut = totalOut;
+  instance.totalIn = totalIn;
   if (transactions) {
     instance.transactions = transactions;
   } else {
@@ -88,19 +98,21 @@ var renderAccount = function () {
 };
 
 var whidhraw = function (ammount) {
-  console.log("removing", ammount, "from", this.name);
+  // console.log("removing", ammount, "from", this.name);
   this.balance -= ammount;
-  console.log(this.balance, "jdid");
+  this.totalOut += ammount;
+  // console.log(this.balance, "jdid");
 };
 
 var deposit = function (ammount) {
   this.balance += ammount;
-  console.log(this.balance, "jdid");
+  this.totalIn += ammount;
+  // console.log(this.balance, "jdid");
 };
 
 // DOM manipulation
 // Get all Account Dom elements
-var $summary = $("#summary");
+var $summary = $("#summary tbody");
 var $content = $("#content");
 
 var $accountInputs = {
@@ -130,6 +142,7 @@ var appendAccount = function () {
 
     // store account in local storage
     localStorage.setItem("storedAccounts", JSON.stringify(storedAccounts));
+    summary();
   }
 };
 
@@ -153,6 +166,8 @@ storedAccounts = map(storedAccounts, function (account) {
     account.name,
     account.category,
     account.balance,
+    account.totalIn,
+    account.totalOut,
     account.id,
     account.transactions
   );
@@ -162,4 +177,5 @@ each(storedAccounts, function (account, i) {
 
   account.render();
 });
+summary();
 // console.log(storedAccounts[0].id);

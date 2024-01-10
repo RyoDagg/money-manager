@@ -160,10 +160,12 @@ $transactionInputs.type.on("change", function () {
   // console.log($transactionInputs.type.find("option:selected").val());
   if ($transactionInputs.type.find("option:selected").val() === "Transfer") {
     $transactionInputs.to.removeAttr("disabled");
-    $transactionInputs.fee.removeAttr("disabled");
+    $transactionInputs.fee.removeAttr("disabled");    
+    $transactionInputs.category.attr("disabled", true);
   } else {
     $transactionInputs.to.attr("disabled", true);
-    $transactionInputs.fee.attr("disabled", true);
+    $transactionInputs.fee.attr("disabled", true);    
+    $transactionInputs.category.removeAttr("disabled");
   }
 });
 

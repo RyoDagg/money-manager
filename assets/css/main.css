@@ -124,6 +124,10 @@ table {
 .column-section tbody tr:hover {
   background-color: #0000003f;
   font-weight: bold;
+  cursor: pointer;
+  height: 2.2rem;
+  font-size: 1.1rem;
+  transition: all linear .2s;
 }
 .column-section tbody * {
   padding: 5px 3px 5px 3px;
@@ -132,7 +136,7 @@ table {
 .input-section select,
 .input-section input {
   display: block;
-  margin: 0px auto 25px;
+  margin: 2px auto 15px;
   height: 28px;
   border-radius: 4px;
   border-color: #136f63;
@@ -145,8 +149,19 @@ table {
   height: 40px;
 }
 
+.input-section select option {
+  height: 40px;
+}
+
 .input-section button {
   padding: 10px 5px 10px 5px;
   font-size: large;
   font-weight: bold;
+}
+.input-label {
+  text-align: left;
+  margin-left: 16%;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0d0630;
 }
