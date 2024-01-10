@@ -154,9 +154,22 @@ table {
 }
 
 .input-section button {
-  padding: 10px 5px 10px 5px;
+  padding: 15px 20px 15px 20px;
   font-size: large;
   font-weight: bold;
+  border-radius: 3px;
+  border-width: 0px;
+  cursor: pointer;
+  background-color: #D7D9B1;
+}
+
+.input-section button:hover {
+  font-weight: bolder;
+  border-width: 1px;
+  border-color: #fff;
+  color: white;
+  background-color: #0D0630;
+  transition: all 0.2s;
 }
 .input-label {
   text-align: left;

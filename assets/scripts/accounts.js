@@ -113,7 +113,6 @@ var deposit = function (ammount) {
 // DOM manipulation
 // Get all Account Dom elements
 var $summary = $("#summary tbody");
-var $content = $("#content");
 
 var $accountInputs = {
   name: $("#name"),

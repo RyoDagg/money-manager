@@ -52,7 +52,7 @@ var Transaction = (
   return instance;
 };
 
-var renderTransaction = function () {
+var renderTransaction = function ($tag) {
   // console.log(this);
   $tr = generateTableRow(
     this.type,
@@ -62,7 +62,11 @@ var renderTransaction = function () {
     this.ammount,
     this.fee
   );
-  $transactions.prepend($tr);
+  if ($tag) {
+    $tag.prepend($tr);
+  } else {
+    $transactions.prepend($tr);
+  }
 };
 
 var $transactions = $("#transactions");
@@ -160,11 +164,11 @@ $transactionInputs.type.on("change", function () {
   // console.log($transactionInputs.type.find("option:selected").val());
   if ($transactionInputs.type.find("option:selected").val() === "Transfer") {
     $transactionInputs.to.removeAttr("disabled");
-    $transactionInputs.fee.removeAttr("disabled");    
+    $transactionInputs.fee.removeAttr("disabled");
     $transactionInputs.category.attr("disabled", true);
   } else {
     $transactionInputs.to.attr("disabled", true);
-    $transactionInputs.fee.attr("disabled", true);    
+    $transactionInputs.fee.attr("disabled", true);
     $transactionInputs.category.removeAttr("disabled");
   }
 });
@@ -206,3 +210,13 @@ each(storedTransactions, function (transaction, i) {
 
   transaction.render();
 });
+
+var $latest = $("#latest-transactions");
+function latest() {
+  each(storedTransactions.slice(0, 10), function (transaction, i) {
+    console.log(2);
+
+    transaction.render($latest);
+  });
+}
+latest();

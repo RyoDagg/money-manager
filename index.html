@@ -26,7 +26,7 @@
     <section class="content">
         <div class="column-section">
             <div class="section-title">
-                <h1>Accounts</h1>
+                <h1>Accounts Overview</h1>
             </div>
             <div class="section-body">
                 <table style="width: 100%;">
@@ -37,34 +37,14 @@
                             <th>Latest Transaction</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cash</td>
-                            <td>115.5TND</td>
-                            <td>4/01/2024 15:36</td>
-                        </tr>
-                        <tr>
-                            <td>Bank BNA</td>
-                            <td>115.5TND</td>
-                            <td>4/01/2024 15:36</td>
-                        </tr>
-                        <tr>
-                            <td>Savings</td>
-                            <td>115.5TND</td>
-                            <td>4/01/2024 15:36</td>
-                        </tr>
-                        <tr>
-                            <td>D17</td>
-                            <td>115.5TND</td>
-                            <td>4/01/2024 15:36</td>
-                        </tr>
+                    <tbody id="accounts-overview">
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="column-section">
             <div class="section-title">
-                <h1>Latest Transactions</h1>
+                <h1>Latest 10 Transactions</h1>
             </div>
 
             <div class="section-body">
@@ -79,50 +59,21 @@
                             <th>Fee</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Transfer</td>
-                            <td>D17</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>350TND</td>
-                            <td>1.8TND</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Food</td>
-                            <td>15TND</td>
-                            <td>--</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Income</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Salary</td>
-                            <td>1.550TND</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Party</td>
-                            <td>85TND</td>
-                            <td>--</td>
-                        </tr>
-                    </tbody>
+                   <tbody id="latest-transactions"></tbody>
                 </table>
             </div>
         </div>
     </section>
     <section class="footer"></section>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
-    
-    
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="assets/scripts/callbacks.js"></script>
+    <script src="assets/scripts/main.js"></script>
+    <script src="assets/scripts/transactionsFilters.js"></script>
+    <script src="assets/scripts/table.js"></script>
+    <script src="assets/scripts/summary.js"></script>
+    <script src="assets/scripts/transactions.js"></script>
+
 </body>
 
 </html>
