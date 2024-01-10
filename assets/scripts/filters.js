@@ -53,7 +53,7 @@ function filterLive(query) {
 }
 
 $filter.category.on("change", function () {
-  filterAccount($filter.category.val());
+  filterCategory($filter.category.val());
 });
 
 $filter.account.on("change", function () {
