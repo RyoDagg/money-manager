@@ -11,10 +11,3 @@
   grid-column-start: 3;
   grid-column-end: 3;
 }
-
-.tool-section {
-  height: 100px;
-  background-color: #d7d9b1a2;
-  border-radius: 20px;
-  margin: 10px 5px 5px 0px;
-}
