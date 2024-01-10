@@ -3,12 +3,12 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.column-section:nth-child(2n + 1) {
+.summary-section {
   grid-column-start: 1;
-  grid-column-end: 2;
+  grid-column-end: 3;
 }
-.column-section:nth-child(2n) {
-  grid-column-start: 2;
+.new-account-section {
+  grid-column-start: 3;
   grid-column-end: 3;
 }
 

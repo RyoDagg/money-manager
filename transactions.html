@@ -87,32 +87,40 @@
                 <h1>+ New Transacrion</h1>
             </div>
 
-            <div class="section-body">
+            <div class="section-body input-section">
                 <select name="" id="type">
-                    <option value="expense">expense</option>
-                    <option value="income">income</option>
-                    <option value="transaction">transaction</option>
+                    <option value="Expence">Expence</option>
+                    <option value="Income">Income</option>
+                    <option value="Transfer">Transfer</option>
                 </select>
 
-                <select name="" id="acc">
-                    <option value="expense">cash</option>
-                    <option value="income">bank</option>
+                <select name="" id="account">
                 </select>
 
-                <select name="" id="categ">
-                    <option value="expense">food</option>
-                    <option value="income">party</option>
-                    <option value="transaction">household</option>
+                <select name="" id="to">
                 </select>
-                <input type="text" id="ammount">
-                <button id="submit">Save</button>
+
+                <select name="" id="category">
+                    <option value="Food 🥪">Food 🥪</option>
+                    <option value="Party">Party</option>
+                    <option value="Tranport 🚖">Tranport 🚖</option>
+                    <option value="HouseHold 🏡">HouseHold 🏡</option>
+                    <option value="Camping 🏕️">Camping 🏕️</option>
+                </select>
+                <input type="text" placeholder="Ammount (TND)" id="ammount">
+                <input type="text" placeholder="Fee (TND)" id="fee">
+                <button id="submit-transaction">Save</button>
             </div>
         </div>
     </section>
     <section class="footer"></section>
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-        <script src="assets/scripts/transactions.js"></script>
+    <script src="assets/scripts/callbacks.js"></script>
+    <script src="assets/scripts/main.js"></script>
+    <script src="assets/scripts/table.js"></script>
+    <script src="assets/scripts/accounts.js"></script>
+    <script src="assets/scripts/transactions.js"></script>
 </body>
 
 </html>

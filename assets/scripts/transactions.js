@@ -1,9 +1,5 @@
+// Check for saved transactions in localStorage and retreiving them
 var storedTransactions;
-// if (Modernizr.localstorage) {
-//   $storedTransactions = localStorage.getItem("storedTransactions");
-// } else {
-//   $storedTransactions = [];
-// }
 
 if (localStorage.getItem("storedTransactions")) {
   storedTransactions = JSON.parse(localStorage.getItem("storedTransactions"));
@@ -11,41 +7,148 @@ if (localStorage.getItem("storedTransactions")) {
   storedTransactions = [];
 }
 
-var $type = $("#type");
-var $acc = $("#acc");
-var $categ = $("#categ");
-var $ammount = $("#ammount");
-var $submit = $("#submit");
+// defining Transaction class and ID generator
+var $transactionID = generateID();
+
+var Transaction = (
+  type,
+  from,
+  fromName,
+  to,
+  toName,
+  category,
+  ammount,
+  fee,
+  id
+) => {
+  var instance = {};
+
+  if (id === undefined) {
+    instance.id = accountsID();
+  } else {
+    instance.id = id;
+  }
+
+  instance.type = type;
+  instance.from = from;
+  instance.fromName = fromName;
+  instance.to = to;
+  instance.toName = toName;
+  instance.category = category;
+  instance.ammount = ammount;
+  instance.fee = fee;
+
+  // Methods
+  instance.render = renderTransaction;
+  // instance.getTransactions = getTransactions;
+
+  return instance;
+};
+
+var renderTransaction = function () {
+  console.log(this);
+  $tr = generateTableRow(
+    this.type,
+    this.fromName,
+    this.toName,
+    this.category,
+    this.ammount,
+    this.fee
+  );
+  $transactions.prepend($tr);
+};
+
 var $transactions = $("#transactions");
 
-var tr = {
-  type: $type.val(),
-  acc: $acc.val(),
-  categ: $categ.val(),
-  ammount: $ammount.val(),
+var $transactionInputs = {
+  type: $("#type"),
+  account: $("#account"),
+  to: $("#to"),
+  category: $("#category"),
+  ammount: $("#ammount"),
+  fee: $("#fee"),
+  submit: $("#submit-transaction"),
 };
-console.log(tr);
 
-$submit.on("click", function () {
-  console.log("rrr");
-  $transactions.prepend(`<tr>
-    <td>${$type.val()}</td>
-    <td>${$acc.val()}</td>
-    <td>--</td>
-    <td>${$categ.val()}</td>
-    <td>${$ammount.val()}</td>
-    <td>--</td>
-</tr>`);
+$transactionInputs.to.attr("disabled", true);
+$transactionInputs.fee.attr("disabled", true);
 
-  storedTransactions.unshift({
-    type: $type.val(),
-    acc: $acc.val(),
-    categ: $categ.val(),
-    ammount: $ammount.val(),
-  });
-
-  localStorage.setItem(
-    "storedTransactions",
-    JSON.stringify(storedTransactions)
-  );
+// append accounts options
+each(storedAccounts, function (account) {
+  $option = $("<option></option>").val(account.id).text(account.name);
+  $transactionInputs.account.append($option);
+  $transactionInputs.to.append($option.clone());
 });
+
+// var tr = {
+//   type: $type.val(),
+//   acc: $acc.val(),
+//   categ: $categ.val(),
+//   ammount: $ammount.val(),
+// };
+// console.log(tr);
+
+var appendTransaction = function () {
+  var invalidInput = isNaN($transactionInputs.ammount.val());
+  if (invalidInput) {
+    alert("Invalid Input Check Again");
+  } else {
+    var to, toName, fee;
+    category;
+    if ($transactionInputs.type.find("option:selected").val() === "Transfer") {
+      to = $transactionInputs.to.find("option:selected").val();
+      toName = $transactionInputs.to.find("option:selected").text();
+      fee = Number($transactionInputs.fee.val());
+      category = "--";
+    } else {
+      to = "--";
+      toName = "--";
+      fee = "--";
+      category = $transactionInputs.category.find("option:selected").val();
+    }
+
+    var transaction = Transaction(
+      $transactionInputs.type.find("option:selected").val(),
+      $transactionInputs.account.find("option:selected").val(),
+      $transactionInputs.account.find("option:selected").text(),
+      to,
+      // $transactionInputs.to.val(),
+      toName,
+      category,
+      Number($transactionInputs.ammount.val()),
+      // Number($transactionInputs.fee.val())
+      fee
+    );
+    console.log(transaction);
+    storedTransactions.unshift(transaction);
+    transaction.render();
+
+    $transactionInputs.ammount.val("");
+    // $transactionInputs.category.val("");
+    // $transactionInputs.balance.val("");
+
+    // store account in local storage
+    localStorage.setItem(
+      "storedTransactions",
+      JSON.stringify(storedTransactions)
+    );
+  }
+};
+
+$transactionInputs.type.on("change", function () {
+  console.log($transactionInputs.type.find("option:selected").val());
+  if ($transactionInputs.type.find("option:selected").val() === "Transfer") {
+    $transactionInputs.to.removeAttr("disabled");
+    $transactionInputs.fee.removeAttr("disabled");
+  } else {
+    $transactionInputs.to.attr("disabled", true);
+    $transactionInputs.fee.attr("disabled", true);
+  }
+});
+
+// $transactionInputs.submit.on("click", function () {
+//   for (const key in $transactionInputs) {
+//     console.log(key, $transactionInputs[key].val());
+//   }
+// });
+$transactionInputs.submit.on("click", appendTransaction);

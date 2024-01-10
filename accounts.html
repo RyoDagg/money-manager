@@ -26,21 +26,20 @@
     </section>
     <section class="tool-section"></section>
     <section class="content">
-        <div class="column-section">
+        <div id="summary" class="column-section summary-section">
             <div class="section-title">
-                <h1>Cash</h1>
+                <h1>Summary</h1>
             </div>
 
             <div class="section-body">
                 <table style="width: 100%;">
                     <thead>
                         <tr>
-                            <th>Type</th>
-                            <th>From</th>
-                            <th>To</th>
+                            <th>Account</th>
                             <th>Category</th>
-                            <th>Ammount</th>
-                            <th>Fee</th>
+                            <th>Balance</th>
+                            <th>Total In</th>
+                            <th>Total Out</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,14 +47,12 @@
                             <td>Transfer</td>
                             <td>D17</td>
                             <td>Cash</td>
-                            <td>--</td>
                             <td>350TND</td>
                             <td>1.8TND</td>
                         </tr>
                         <tr>
                             <td>Expence</td>
                             <td>Cash</td>
-                            <td>--</td>
                             <td>Food</td>
                             <td>15TND</td>
                             <td>--</td>
@@ -64,7 +61,6 @@
                         <tr>
                             <td>Income</td>
                             <td>Cash</td>
-                            <td>--</td>
                             <td>Salary</td>
                             <td>1.550TND</td>
                             <td>--</td>
@@ -72,7 +68,6 @@
                         <tr>
                             <td>Expence</td>
                             <td>Cash</td>
-                            <td>--</td>
                             <td>Party</td>
                             <td>85TND</td>
                             <td>--</td>
@@ -81,123 +76,34 @@
                 </table>
             </div>
         </div>
-        <div class="column-section">
+        <div class="column-section new-account-section">
             <div class="section-title">
-                <h1>Cash</h1>
+                <h1>Add New</h1>
             </div>
 
-            <div class="section-body">
-                <table style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Category</th>
-                            <th>Ammount</th>
-                            <th>Fee</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Transfer</td>
-                            <td>D17</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>350TND</td>
-                            <td>1.8TND</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Food</td>
-                            <td>15TND</td>
-                            <td>--</td>
-                        </tr>
+            <div class="section-body input-section">
 
-                        <tr>
-                            <td>Income</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Salary</td>
-                            <td>1.550TND</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Party</td>
-                            <td>85TND</td>
-                            <td>--</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <input id="name" placeholder="name">
+
+                <select id="category">
+                    <option value="cash">cash</option>
+                    <option value="bank">bank</option>
+                </select>
+
+                <input id="balance" placeholder="balance">
+
+                <button id="submit-account">Save</button>
             </div>
         </div>
+    </section>
+    <section id="content" class="content">
         <div class="column-section">
             <div class="section-title">
-                <h1>Cash</h1>
+                <h1>Cash: 120TND</h1>
             </div>
 
             <div class="section-body">
-                <table style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Category</th>
-                            <th>Ammount</th>
-                            <th>Fee</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Transfer</td>
-                            <td>D17</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>350TND</td>
-                            <td>1.8TND</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Food</td>
-                            <td>15TND</td>
-                            <td>--</td>
-                        </tr>
-
-                        <tr>
-                            <td>Income</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Salary</td>
-                            <td>1.550TND</td>
-                            <td>--</td>
-                        </tr>
-                        <tr>
-                            <td>Expence</td>
-                            <td>Cash</td>
-                            <td>--</td>
-                            <td>Party</td>
-                            <td>85TND</td>
-                            <td>--</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="column-section">
-            <div class="section-title">
-                <h1>Cash</h1>
-            </div>
-
-            <div class="section-body">
-                <table style="width: 100%;">
+                <table>
                     <thead>
                         <tr>
                             <th>Type</th>
@@ -251,6 +157,10 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="assets/scripts/callbacks.js"></script>
+    <script src="assets/scripts/main.js"></script>
+    <script src="assets/scripts/table.js"></script>
+    <script src="assets/scripts/accounts.js"></script>
 </body>
 
 </html>
