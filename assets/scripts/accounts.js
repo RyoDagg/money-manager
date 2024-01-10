@@ -1,5 +1,6 @@
 // Check for saved accounts in localStorage and retreiving them
 var storedAccounts;
+var lastAccountId;
 
 if (localStorage.getItem("storedAccounts")) {
   storedAccounts = JSON.parse(localStorage.getItem("storedAccounts"));
@@ -7,20 +8,32 @@ if (localStorage.getItem("storedAccounts")) {
   storedAccounts = [];
 }
 
-// defining Account class and ID generator
-var accountsID = generateID();
+if (localStorage.getItem("lastAccountId")) {
+  lastAccountId = Number(localStorage.getItem("lastAccountId"));
+} else {
+  lastAccountId = 0;
+}
 
-var Account = (name, category, balance, id) => {
+// defining Account class and ID generator
+var accountsID = generateID(lastAccountId);
+
+var Account = (name, category, balance, id, transactions) => {
   var instance = {};
 
   if (id === undefined) {
     instance.id = accountsID();
+    localStorage.setItem("lastAccountId", instance.id);
   } else {
     instance.id = id;
   }
   instance.name = name;
   instance.category = category;
   instance.balance = balance;
+  if (transactions) {
+    instance.transactions = transactions;
+  } else {
+    instance.transactions = [];
+  }
 
   // Methods
   instance.render = renderAccount;
@@ -53,6 +66,21 @@ var renderAccount = function () {
     "Ammount",
     "Fee"
   );
+  var $tbody = $("<tbody></tbody>");
+  $table.append($tbody);
+
+  each(this.transactions.slice(0, 6), function (transaction) {
+    $tbody.append(
+      generateTableRow(
+        transaction.type,
+        transaction.fromName,
+        transaction.toName,
+        transaction.category,
+        transaction.ammount,
+        transaction.fee
+      )
+    );
+  });
   $sectionBody.append($table);
   $div.append($sectionTitle);
   $div.append($sectionBody);
@@ -62,11 +90,12 @@ var renderAccount = function () {
 var whidhraw = function (ammount) {
   console.log("removing", ammount, "from", this.name);
   this.balance -= ammount;
-  console.log(this.balance);
+  console.log(this.balance, "jdid");
 };
 
 var deposit = function (ammount) {
   this.balance += ammount;
+  console.log(this.balance, "jdid");
 };
 
 // DOM manipulation
@@ -120,7 +149,13 @@ $accountInputs.balance.keypress(function (event) {
 
 // Displaying stored accounts
 storedAccounts = map(storedAccounts, function (account) {
-  return Account(account.name, account.category, account.balance, account.id);
+  return Account(
+    account.name,
+    account.category,
+    account.balance,
+    account.id,
+    account.transactions
+  );
 });
 each(storedAccounts, function (account, i) {
   // console.log(2);

@@ -1,5 +1,6 @@
 // Check for saved transactions in localStorage and retreiving them
 var storedTransactions;
+var lastTransactionId;
 
 if (localStorage.getItem("storedTransactions")) {
   storedTransactions = JSON.parse(localStorage.getItem("storedTransactions"));
@@ -7,8 +8,13 @@ if (localStorage.getItem("storedTransactions")) {
   storedTransactions = [];
 }
 
+if (localStorage.getItem("lastTransactionId")) {
+  lastTransactionId = Number(localStorage.getItem("lastTransactionId"));
+} else {
+  lastTransactionId = 0;
+}
 // defining Transaction class and ID generator
-var $transactionID = generateID();
+var transactionID = generateID(lastTransactionId);
 
 var Transaction = (
   type,
@@ -24,7 +30,8 @@ var Transaction = (
   var instance = {};
 
   if (id === undefined) {
-    instance.id = accountsID();
+    instance.id = transactionID();
+    localStorage.setItem("lastTransactionId", instance.id);
   } else {
     instance.id = id;
   }
@@ -94,17 +101,19 @@ var appendTransaction = function () {
     alert("Invalid Input Check Again");
   } else {
     var to, toName, fee, category;
+    var from = $transactionInputs.account.find("option:selected").val();
     if ($transactionInputs.type.find("option:selected").val() === "Transfer") {
       to = $transactionInputs.to.find("option:selected").val();
       toName = $transactionInputs.to.find("option:selected").text();
       fee = Number($transactionInputs.fee.val());
       category = "--";
-      // console.log(to, toName, fee, category);
 
       transact(
         $transactionInputs.type.find("option:selected").val(),
-        $transactionInputs.account.find("option:selected").val(),
-        Number($transactionInputs.ammount.val(), to, fee)
+        from,
+        Number($transactionInputs.ammount.val()),
+        to,
+        fee
       );
     } else {
       to = "--";
@@ -114,14 +123,14 @@ var appendTransaction = function () {
 
       transact(
         $transactionInputs.type.find("option:selected").val(),
-        $transactionInputs.account.find("option:selected").val(),
+        from,
         Number($transactionInputs.ammount.val())
       );
     }
 
     var transaction = Transaction(
       $transactionInputs.type.find("option:selected").val(),
-      $transactionInputs.account.find("option:selected").val(),
+      from,
       $transactionInputs.account.find("option:selected").text(),
       to,
       // $transactionInputs.to.val(),
@@ -138,7 +147,7 @@ var appendTransaction = function () {
     $transactionInputs.ammount.val("");
     // $transactionInputs.category.val("");
     // $transactionInputs.balance.val("");
-
+    storeTransactionAccount(from, transaction, to);
     // store account in local storage
     localStorage.setItem(
       "storedTransactions",
